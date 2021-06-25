@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+
+  rest-api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgres://application:application@postgres/application
+    ports:
+      - "8080:8080"
+    restart: always

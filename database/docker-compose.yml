@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+
+  flyway:
+    image: flyway/flyway:7.10
+    command: migrate
+    working_dir: /etc/flyway
+    volumes:
+      - ./:/etc/flyway
+
+  postgres:
+    image: postgres:11.3-alpine
+    environment:
+      - POSTGRES_PASSWORD=application
+      - POSTGRES_USER=application
+    restart: always
+    ports:
+      - "5432:5432"
